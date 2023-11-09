@@ -6,6 +6,7 @@ import de.ait.todo.dto.UserDto;
 import de.ait.todo.services.SignUpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin
 public class SignUpController implements SignUpApi {
 
     private final SignUpService signUpService;
