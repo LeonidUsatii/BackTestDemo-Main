@@ -30,16 +30,18 @@ public class InitialDataRunner implements CommandLineRunner {
             User admin = User.builder()
                     .email("admin@ait-tr.de")
                     .role(User.Role.ADMIN)
+                    .userName("Admin")
+                    .state(User.State.CONFIRMED)
                     .hashPassword("$2a$10$YijmlwvWMcfIhT2qQOQ7EeRuMiByNjPtKXa78J7Y8z7XZWJJQTDa.") // admin
                     .build();
 
-            alisher = User.builder()
-                    .email("alisher@ait-tr.de")
-                    .role(User.Role.USER)
-                    .hashPassword("$2a$10$RVSHTssubxIkoAl3rQ58UedU8sPMM6FZRxg1icrJg07f.MQAMRpDy") // alisher
-                    .build();
+//            alisher = User.builder()
+//                    .email("alisher@ait-tr.de")
+//                    .role(User.Role.USER)
+//                    .hashPassword("$2a$10$RVSHTssubxIkoAl3rQ58UedU8sPMM6FZRxg1icrJg07f.MQAMRpDy") // alisher
+//                    .build();
             usersRepository.save(admin);
-            usersRepository.save(alisher);
+            //usersRepository.save(alisher);
         }
 
         if (tasksRepository.count() == 0) {
