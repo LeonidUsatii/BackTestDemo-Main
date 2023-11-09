@@ -3,7 +3,6 @@ package de.ait.todo.controllers;
 import de.ait.todo.controllers.api.UsersApi;
 import de.ait.todo.dto.ProfileDto;
 import de.ait.todo.dto.TasksPage;
-import de.ait.todo.dto.UserDto;
 import de.ait.todo.security.details.AuthenticatedUser;
 import de.ait.todo.services.UsersService;
 import lombok.RequiredArgsConstructor;
@@ -38,11 +37,4 @@ public class UsersController implements UsersApi {
         Long currentUserId = currentUser.getUser().getId();
         return ResponseEntity.ok(usersService.getTasksByUser(currentUserId));
     }
-
-    @Override
-    public ResponseEntity<ProfileDto> getConfirmation(String parameter) {
-        return null;
-    }
-
-
 }
