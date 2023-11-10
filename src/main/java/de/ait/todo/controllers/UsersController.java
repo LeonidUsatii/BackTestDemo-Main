@@ -9,12 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * 6/13/2023
- * spring-security-demo
- *
- * @author Marsel Sidikov (AIT TR)
- */
+
 @RestController
 @RequiredArgsConstructor
 public class UsersController implements UsersApi {
