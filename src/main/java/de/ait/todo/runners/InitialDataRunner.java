@@ -15,7 +15,7 @@ public class InitialDataRunner implements CommandLineRunner {
 
     UsersRepository usersRepository;
 
-    TasksRepository tasksRepository;
+//    TasksRepository tasksRepository;
 
     @Override
     public void run(String... args) {
