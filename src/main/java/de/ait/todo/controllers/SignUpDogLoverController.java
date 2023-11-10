@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "https://www.hunde24.online", allowedHeaders = "Content-Type")
 public class SignUpDogLoverController implements SignUpDogLover {
 
     private final SignUpDogLoverService signUpDogLoverService;

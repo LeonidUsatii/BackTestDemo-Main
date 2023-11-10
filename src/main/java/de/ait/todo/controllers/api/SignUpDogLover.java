@@ -28,7 +28,7 @@ import javax.validation.Valid;
         @Tag(name = "Users")
 })
 @RequestMapping("/api/registerUser")
-@CrossOrigin
+@CrossOrigin(origins = "https://www.hunde24.online", allowedHeaders = "Content-Type")
 public interface SignUpDogLover {
 
     @Operation(summary = "Регистрация пользователя")
@@ -46,7 +46,7 @@ public interface SignUpDogLover {
     })
 
     @PostMapping
-    @CrossOrigin
+    @CrossOrigin(origins = "https://www.hunde24.online", allowedHeaders = "Content-Type")
     ResponseEntity<DogLoverDto> signUp(@RequestBody @Valid NewDogLoverDto newUser);
 }
 
