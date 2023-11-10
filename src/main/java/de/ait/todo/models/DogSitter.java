@@ -59,7 +59,7 @@ public class DogSitter {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
-    private List<Task> tasks;
+//    @OneToMany(mappedBy = "user")
+//    private List<Task> tasks;
 }
 
