@@ -1,10 +1,6 @@
 package de.ait.todo.controllers.api;
 
 import de.ait.todo.dto.ProfileDto;
-import de.ait.todo.dto.StandardResponseDto;
-import de.ait.todo.dto.TasksPage;
-import de.ait.todo.dto.UserDto;
-import de.ait.todo.models.User;
 import de.ait.todo.security.details.AuthenticatedUser;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -53,30 +49,30 @@ public interface UsersApi {
     ResponseEntity<ProfileDto> getProfile(@Parameter(hidden = true)
                                           @AuthenticationPrincipal AuthenticatedUser currentUser);
 
-    @Operation(summary = "Получение списка своих задач", description = "Доступно только пользователю")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Список задач",
-                    content = {
-                            @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = TasksPage.class))
-                    }
-            ),
-            @ApiResponse(responseCode = "401", description = "Пользователь не авторизован",
-                    content = {
-                            @Content(mediaType = "application/json",
-                                    schema = @Schema(ref = "StandardResponseDto"))
-                    }
-            ),
-            @ApiResponse(responseCode = "403", description = "Запрещено",
-                    content = {
-                            @Content(mediaType = "application/json",
-                                    schema = @Schema(ref = "StandardResponseDto"))
-                    }
-            )
-    })
-    @GetMapping("/my/tasks")
-    ResponseEntity<TasksPage> getMyTasks(@Parameter(hidden = true)
-                                          @AuthenticationPrincipal AuthenticatedUser currentUser);
+    //@Operation(summary = "Получение списка своих задач", description = "Доступно только пользователю")
+    //@ApiResponses(value = {
+           // @ApiResponse(responseCode = "200", description = "Список задач",
+//                    content = {
+//                            @Content(mediaType = "application/json",
+//                                    schema = @Schema(implementation = TasksPage.class))
+//                    }
+            //),
+//            @ApiResponse(responseCode = "401", description = "Пользователь не авторизован",
+//                    content = {
+//                            @Content(mediaType = "application/json",
+//                                    schema = @Schema(ref = "StandardResponseDto"))
+//                    }
+//            ),
+//            @ApiResponse(responseCode = "403", description = "Запрещено",
+//                    content = {
+//                            @Content(mediaType = "application/json",
+//                                    schema = @Schema(ref = "StandardResponseDto"))
+//                    }
+//            )
+//    })
+//    @GetMapping("/my/tasks")
+//    ResponseEntity<TasksPage> getMyTasks(@Parameter(hidden = true)
+//                                          @AuthenticationPrincipal AuthenticatedUser currentUser);
     @GetMapping("/confirm/{confirm-code}")
 //    String getConfirmation(@PathVariable("confirm-code") String confirmCode);
     ResponseEntity<ProfileDto> getConfirmation( @PathVariable("confirm-code") String parameter);

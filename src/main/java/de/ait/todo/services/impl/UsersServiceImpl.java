@@ -1,8 +1,6 @@
 package de.ait.todo.services.impl;
 
 import de.ait.todo.dto.ProfileDto;
-import de.ait.todo.dto.TasksPage;
-import de.ait.todo.models.Task;
 import de.ait.todo.models.User;
 import de.ait.todo.repositories.TasksRepository;
 import de.ait.todo.repositories.UsersRepository;

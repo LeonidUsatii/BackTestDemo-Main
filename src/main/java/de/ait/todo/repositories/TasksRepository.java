@@ -1,6 +1,5 @@
 package de.ait.todo.repositories;
 
-import de.ait.todo.models.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
