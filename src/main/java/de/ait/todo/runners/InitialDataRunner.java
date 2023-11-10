@@ -1,7 +1,6 @@
 package de.ait.todo.runners;
 
 import de.ait.todo.models.User;
-import de.ait.todo.repositories.TasksRepository;
 import de.ait.todo.repositories.UsersRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
