@@ -41,7 +41,7 @@ public class InitialDataRunner implements CommandLineRunner {
 //                    .hashPassword("$2a$10$RVSHTssubxIkoAl3rQ58UedU8sPMM6FZRxg1icrJg07f.MQAMRpDy") // alisher
 //                    .build();
             usersRepository.save(admin);
-           // usersRepository.save(alisher);
+//            usersRepository.save(alisher);
         }
 
         if (tasksRepository.count() == 0) {

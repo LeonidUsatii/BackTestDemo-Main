@@ -35,6 +35,7 @@ public class UsersServiceImpl implements UsersService {
         return ProfileDto.builder()
                 .id(user.getId())
                 .email(user.getEmail())
+                .userName(user.getUserName())
                 .role(user.getRole().name())
                 .build();
     }
