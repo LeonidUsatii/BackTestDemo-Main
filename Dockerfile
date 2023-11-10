@@ -1,4 +1,4 @@
-FROM maven:3.8.3-openjdk-17 as build
+FROM maven as build
 WORKDIR /workspace/app
 
 COPY pom.xml .
@@ -13,6 +13,3 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 ENTRYPOINT ["java","-cp","app:app/lib/*", "-Dspring.profiles.active=prod", "de.ait.todo.BackendDemoApplication"]
-
-
-
