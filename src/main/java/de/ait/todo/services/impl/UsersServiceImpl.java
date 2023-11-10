@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static de.ait.todo.dto.TaskDto.from;
+//import static de.ait.todo.dto.TaskDto.from;
 
 /**
  * 6/13/2023
@@ -38,14 +38,14 @@ public class UsersServiceImpl implements UsersService {
                 .build();
     }
 
-    @Override
-    public TasksPage getTasksByUser(Long currentUserId) {
-        List<Task> tasks = tasksRepository.findAllByUser_Id(currentUserId);
-
-        return TasksPage.builder()
-                .tasks(from(tasks))
-                .build();
-
-    }
+//    @Override
+//    public TasksPage getTasksByUser(Long currentUserId) {
+//        List<Task> tasks = tasksRepository.findAllByUser_Id(currentUserId);
+//
+//        return TasksPage.builder()
+//                .tasks(from(tasks))
+//                .build();
+//
+//    }
 
 }

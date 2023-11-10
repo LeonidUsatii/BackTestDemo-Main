@@ -7,5 +7,5 @@ public interface UsersService {
 
     ProfileDto getProfile(Long currentUserId);
 
-    TasksPage getTasksByUser(Long currentUserId);
+   // TasksPage getTasksByUser(Long currentUserId);
 }
