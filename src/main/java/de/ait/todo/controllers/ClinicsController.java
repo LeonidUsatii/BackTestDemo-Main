@@ -22,6 +22,8 @@ public class ClinicsController implements ClinicsApi {
 
     @Override
     public List<ClinicDto> getClinics() {
+        System.out.println("LEO-LEO-LEO");
+
         return clinicsService.getClinics();
     }
 
