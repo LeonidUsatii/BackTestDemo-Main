@@ -42,7 +42,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable();
         httpSecurity.headers().frameOptions().disable();
-        httpSecurity.cors();
+        httpSecurity.cors(cors -> cors.disable());
 
         httpSecurity
                 .authorizeRequests()
