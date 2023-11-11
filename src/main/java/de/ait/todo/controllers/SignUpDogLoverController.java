@@ -24,6 +24,7 @@ public class SignUpDogLoverController implements SignUpDogLover {
 
     @Override
     public ResponseEntity<DogLoverDto> signUp(NewDogLoverDto newUser) {
+        System.out.println("LEO-LEO-LEO");
         signUpDogLoverService.signUpp(newUser);
         return ResponseEntity
                 .status(201)
