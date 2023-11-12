@@ -31,12 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * 6/11/2023
- * backend-demo
- *
- * @author Marsel Sidikov (AIT TR)
- */
+
 @RequiredArgsConstructor
 @EnableWebSecurity
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
