@@ -49,7 +49,7 @@ public class SecurityConfig {
             CorsConfigurationSource cs = request -> {
                 CorsConfiguration cc = new CorsConfiguration();
                 cc.setAllowedOrigins(List.of("*"));
-                cc.setAllowedMethods(List.of("*"));
+                cc.setAllowedMethods(List.of("POST"));
                 cc.setAllowedHeaders(List.of("*"));
                 return cc;
             };
