@@ -16,7 +16,7 @@ public class UsersController implements UsersApi {
 
     private final UsersService usersService;
 
-    //@PreAuthorize("")
+    @PreAuthorize("isAuthenticated()")
     @Override
     public ResponseEntity<ProfileDto> getProfile(AuthenticatedUser currentUser) {
         System.out.println("LEO-LEO-LEO-123");
