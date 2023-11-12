@@ -67,6 +67,8 @@ public class AuthenticatedUser implements UserDetails {
     }
 
     public User getUser() {
+        System.out.println("Данные с логина");
+
         return user;
     }
 }
