@@ -85,12 +85,12 @@ public class SecurityConfig {
                 .exceptionHandling()
                 .defaultAuthenticationEntryPointFor(((request, response, authException) -> {
                     System.out.println("Leo-Sec");
-                    //fillResponse(response, HttpStatus.UNAUTHORIZED, "User unauthorized");
+                    fillResponse(response, HttpStatus.UNAUTHORIZED, "User unauthorized");
                 }), new AntPathRequestMatcher("/api/**"))
 
                 .accessDeniedHandler((request, response, accessDeniedException) -> {
                     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                    System.out.println("Leo-Sec");
+                    System.out.println("Leo-Sec 77777777");
 
                     fillResponse(response, HttpStatus.FORBIDDEN, "Access denied for user with email <" +
                             authentication.getName() + "> and role " + authentication.getAuthorities());
