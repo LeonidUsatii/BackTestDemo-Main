@@ -85,7 +85,7 @@ public class SecurityConfig {
                 .exceptionHandling()
                 .defaultAuthenticationEntryPointFor(((request, response, authException) -> {
                     System.out.println("Leo-Sec");
-                    fillResponse(response, HttpStatus.UNAUTHORIZED, "User unauthorized");
+                    //fillResponse(response, HttpStatus.UNAUTHORIZED, "User unauthorized");
                 }), new AntPathRequestMatcher("/api/**"))
 
                 .accessDeniedHandler((request, response, accessDeniedException) -> {
