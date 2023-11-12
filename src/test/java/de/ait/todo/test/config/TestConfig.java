@@ -21,33 +21,33 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
  *
  * @author Marsel Sidikov (AIT TR)
  */
-//@TestConfiguration
-//@EnableAutoConfiguration(exclude = {
-//        DataSourceAutoConfiguration.class,
-//        DataSourceTransactionManagerAutoConfiguration.class,
-//        HibernateJpaAutoConfiguration.class
-//})
-//@Profile("test")
+@TestConfiguration
+@EnableAutoConfiguration(exclude = {
+        DataSourceAutoConfiguration.class,
+        DataSourceTransactionManagerAutoConfiguration.class,
+        HibernateJpaAutoConfiguration.class
+})
+@Profile("test")
 public class TestConfig {
-//    public static final String MOCK_ADMIN = "admin";
-//
-//    @Bean
-//    @Primary
-//    public UserDetailsService userDetailsService() {
-//        return new InMemoryUserDetailsManager() {
-//            @Override
-//            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//                if (username.equals(MOCK_ADMIN)) {
-//                    return new AuthenticatedUser(
-//                            User.builder()
-//                                    .id(1L)
-//                                    .email(MOCK_ADMIN)
-//                                    .role(User.Role.ADMIN)
-//                                    .build()
-//                    );
-//                } else throw new UsernameNotFoundException("Пользователь не найден");
-//            }
-//        };
-//    }
+    public static final String MOCK_ADMIN = "admin";
+
+    @Bean
+    @Primary
+    public UserDetailsService userDetailsService() {
+        return new InMemoryUserDetailsManager() {
+            @Override
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+                if (username.equals(MOCK_ADMIN)) {
+                    return new AuthenticatedUser(
+                            User.builder()
+                                    .id(1L)
+                                    .email(MOCK_ADMIN)
+                                    .role(User.Role.ADMIN)
+                                    .build()
+                    );
+                } else throw new UsernameNotFoundException("Пользователь не найден");
+            }
+        };
+    }
 
 }

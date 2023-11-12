@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * 6/11/2023
@@ -19,23 +18,18 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "account")
-public class User {
-
-    public enum Role {
-        USER, ADMIN
-    }
+public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String email;
-    private String hashPassword;
+    private String name;
 
-    @Enumerated(value = EnumType.STRING)
-    private Role role;
+    @Column(length = 1000)
+    private String description;
 
-    @OneToMany(mappedBy = "user")
-    private List<Task> tasks;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

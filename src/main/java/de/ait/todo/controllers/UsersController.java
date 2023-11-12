@@ -2,6 +2,7 @@ package de.ait.todo.controllers;
 
 import de.ait.todo.controllers.api.UsersApi;
 import de.ait.todo.dto.ProfileDto;
+import de.ait.todo.dto.TasksPage;
 import de.ait.todo.security.details.AuthenticatedUser;
 import de.ait.todo.services.UsersService;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
-
+/**
+ * 6/13/2023
+ * spring-security-demo
+ *
+ * @author Marsel Sidikov (AIT TR)
+ */
 @RestController
 @RequiredArgsConstructor
 public class UsersController implements UsersApi {
@@ -19,25 +25,16 @@ public class UsersController implements UsersApi {
     @PreAuthorize("isAuthenticated()")
     @Override
     public ResponseEntity<ProfileDto> getProfile(AuthenticatedUser currentUser) {
-        System.out.println("LEO-LEO-LEO-123");
-        System.out.println(currentUser.getUsername());
         Long currentUserId = currentUser.getUser().getId();
         ProfileDto profile = usersService.getProfile(currentUserId);
 
         return ResponseEntity.ok(profile);
     }
 
-//    @PreAuthorize("hasAuthority('USER')")
-//    @Override
-//    public ResponseEntity<TasksPage> getMyTasks(AuthenticatedUser currentUser) {
-//        Long currentUserId = currentUser.getUser().getId();
-//        return ResponseEntity.ok(usersService.getTasksByUser(currentUserId));
-//    }
-
+    @PreAuthorize("hasAuthority('USER')")
     @Override
-    public ResponseEntity<ProfileDto> getConfirmation(String parameter) {
-        return null;
+    public ResponseEntity<TasksPage> getMyTasks(AuthenticatedUser currentUser) {
+        Long currentUserId = currentUser.getUser().getId();
+        return ResponseEntity.ok(usersService.getTasksByUser(currentUserId));
     }
-
-
 }

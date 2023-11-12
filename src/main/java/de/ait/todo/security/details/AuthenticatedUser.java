@@ -57,18 +57,12 @@ public class AuthenticatedUser implements UserDetails {
         return true;
     }
 
-    public boolean isAuthenticated()  {
-        return true;
-    }
-
     @Override
     public boolean isEnabled() {
         return true;
     }
 
     public User getUser() {
-        System.out.println("Данные с логина");
-
         return user;
     }
 }

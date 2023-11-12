@@ -19,6 +19,5 @@ public class ProfileDto {
 
     private Long id;
     private String email;
-    private String userName;
     private String role;
 }
