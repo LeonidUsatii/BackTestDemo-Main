@@ -45,7 +45,7 @@ public interface UsersApi {
                     }
             )
     })
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("permitAll()")
     @GetMapping("/my/profile")
     ResponseEntity<ProfileDto> getProfile(@Parameter(hidden = true)
                                           @AuthenticationPrincipal AuthenticatedUser currentUser);
