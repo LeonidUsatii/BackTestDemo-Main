@@ -63,9 +63,11 @@ public class SecurityConfig {
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/api/login")
+                .permitAll()
                 .successHandler((request, response, authentication) -> {
                     fillResponse(response, HttpStatus.OK, "Login successful");
                 })
+                .permitAll()
                 .failureHandler(((request, response, exception) -> {
                     fillResponse(response, HttpStatus.UNAUTHORIZED, "Incorrect username or password");
                 }))
@@ -84,8 +86,10 @@ public class SecurityConfig {
                 .and()
                 .logout()
                 .logoutUrl("/api/logout")
+                .permitAll()
                 .logoutSuccessHandler((request, response, authentication) -> {
                     fillResponse(response, HttpStatus.OK, "Logout successful");
+
                 });
         return httpSecurity.build();
     }

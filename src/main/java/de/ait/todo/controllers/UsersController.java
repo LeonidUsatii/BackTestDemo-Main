@@ -22,7 +22,7 @@ public class UsersController implements UsersApi {
 
     private final UsersService usersService;
 
-    @PreAuthorize("permitAll()")
+    @PreAuthorize("isAuthenticated()")
     @Override
     public ResponseEntity<ProfileDto> getProfile(AuthenticatedUser currentUser) {
         Long currentUserId = currentUser.getUser().getId();
@@ -31,7 +31,7 @@ public class UsersController implements UsersApi {
         return ResponseEntity.ok(profile);
     }
 
-    @PreAuthorize("permitAll()")
+    @PreAuthorize("hasAuthority('USER')")
     @Override
     public ResponseEntity<TasksPage> getMyTasks(AuthenticatedUser currentUser) {
         Long currentUserId = currentUser.getUser().getId();
