@@ -82,7 +82,7 @@ public class SecurityConfig {
                     fillResponse(response, HttpStatus.UNAUTHORIZED, "Incorrect username or password");
                 }))
                 .and()
-                .exceptionHandling()
+ //               .exceptionHandling()
 //                .defaultAuthenticationEntryPointFor(((request, response, authException) -> {
 //                    fillResponse(response, HttpStatus.UNAUTHORIZED, "User unauthorized");
 //                }), new AntPathRequestMatcher("/api/**"))
@@ -93,7 +93,7 @@ public class SecurityConfig {
 //                            authentication.getName() + "> and role " + authentication.getAuthorities());
 //
 //                })
-                .and()
+ //               .and()
                 .logout()
                 .logoutUrl("/api/logout")
                 .logoutSuccessHandler((request, response, authentication) -> {
