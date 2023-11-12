@@ -37,6 +37,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println(user);
         System.out.println(user.getUserName());
 
+        AuthenticatedUser user1 = new AuthenticatedUser(user);
+
+        System.out.println(user1);
+
         return new AuthenticatedUser(user);
     }
 }
