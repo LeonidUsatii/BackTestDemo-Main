@@ -57,6 +57,10 @@ public class AuthenticatedUser implements UserDetails {
         return true;
     }
 
+    public boolean isAuthenticated()  {
+        return true;
+    }
+
     @Override
     public boolean isEnabled() {
         return true;

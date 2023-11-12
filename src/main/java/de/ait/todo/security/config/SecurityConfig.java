@@ -83,16 +83,16 @@ public class SecurityConfig {
                 }))
                 .and()
                 .exceptionHandling()
-                .defaultAuthenticationEntryPointFor(((request, response, authException) -> {
-                    fillResponse(response, HttpStatus.UNAUTHORIZED, "User unauthorized");
-                }), new AntPathRequestMatcher("/api/**"))
-                .accessDeniedHandler((request, response, accessDeniedException) -> {
-                    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-                    fillResponse(response, HttpStatus.FORBIDDEN, "Access denied for user with email <" +
-                            authentication.getName() + "> and role " + authentication.getAuthorities());
-
-                })
+//                .defaultAuthenticationEntryPointFor(((request, response, authException) -> {
+//                    fillResponse(response, HttpStatus.UNAUTHORIZED, "User unauthorized");
+//                }), new AntPathRequestMatcher("/api/**"))
+//                .accessDeniedHandler((request, response, accessDeniedException) -> {
+//                    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//
+//                    fillResponse(response, HttpStatus.FORBIDDEN, "Access denied for user with email <" +
+//                            authentication.getName() + "> and role " + authentication.getAuthorities());
+//
+//                })
                 .and()
                 .logout()
                 .logoutUrl("/api/logout")
