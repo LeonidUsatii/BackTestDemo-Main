@@ -46,6 +46,7 @@ public class SecurityConfig {
     @Autowired
     private ObjectMapper objectMapper;
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable();
@@ -77,6 +78,7 @@ public class SecurityConfig {
                 .loginProcessingUrl("/api/login")
                 .successHandler((request, response, authentication) -> {
                     fillResponse(response, HttpStatus.OK, "Login successful");
+                    System.out.println("Leo-Sec-1");
                 })
                 .failureHandler(((request, response, exception) -> {
                     fillResponse(response, HttpStatus.UNAUTHORIZED, "Incorrect username or password");
@@ -84,7 +86,7 @@ public class SecurityConfig {
                 .and()
                 .exceptionHandling()
                 .defaultAuthenticationEntryPointFor(((request, response, authException) -> {
-                    System.out.println("Leo-Sec");
+                    System.out.println("Leo-Sec-2");
                     fillResponse(response, HttpStatus.UNAUTHORIZED, "User unauthorized");
                 }), new AntPathRequestMatcher("/api/**"))
 
