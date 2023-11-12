@@ -31,7 +31,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * 6/11/2023
+ * backend-demo
+ *
+ * @author Marsel Sidikov (AIT TR)
+ */
 @RequiredArgsConstructor
 @EnableWebSecurity
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -77,18 +82,18 @@ public class SecurityConfig {
                     fillResponse(response, HttpStatus.UNAUTHORIZED, "Incorrect username or password");
                 }))
                 .and()
- //               .exceptionHandling()
-//                .defaultAuthenticationEntryPointFor(((request, response, authException) -> {
-//                    fillResponse(response, HttpStatus.UNAUTHORIZED, "User unauthorized");
-//                }), new AntPathRequestMatcher("/api/**"))
-//                .accessDeniedHandler((request, response, accessDeniedException) -> {
-//                    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//
-//                    fillResponse(response, HttpStatus.FORBIDDEN, "Access denied for user with email <" +
-//                            authentication.getName() + "> and role " + authentication.getAuthorities());
-//
-//                })
- //               .and()
+                .exceptionHandling()
+                .defaultAuthenticationEntryPointFor(((request, response, authException) -> {
+                    fillResponse(response, HttpStatus.UNAUTHORIZED, "User unauthorized");
+                }), new AntPathRequestMatcher("/api/**"))
+                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+                    fillResponse(response, HttpStatus.FORBIDDEN, "Access denied for user with email <" +
+                            authentication.getName() + "> and role " + authentication.getAuthorities());
+
+                })
+                .and()
                 .logout()
                 .logoutUrl("/api/logout")
                 .logoutSuccessHandler((request, response, authentication) -> {
