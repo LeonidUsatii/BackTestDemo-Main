@@ -25,6 +25,7 @@ public class UsersController implements UsersApi {
     @PreAuthorize("isAuthenticated()")
     @Override
     public ResponseEntity<ProfileDto> getProfile(AuthenticatedUser currentUser) {
+        System.out.println("TEST-PROFILE");
         Long currentUserId = currentUser.getUser().getId();
         ProfileDto profile = usersService.getProfile(currentUserId);
 

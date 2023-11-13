@@ -26,10 +26,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        System.out.println("TEST-UserDetails");
         User user = usersRepository.findByEmail(email).orElseThrow(
                 () -> new UsernameNotFoundException("User <" + email + "> not found"));
-
         AuthenticatedUser user1 = new AuthenticatedUser(user);
+        System.out.println("TEST - " + user1.getAuthorities());
         return new AuthenticatedUser(user);
     }
 }
