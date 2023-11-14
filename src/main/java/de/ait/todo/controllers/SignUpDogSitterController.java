@@ -6,12 +6,10 @@ import de.ait.todo.dto.DogSitterDto;
 import de.ait.todo.services.SignUpSitterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin
 public class SignUpDogSitterController implements SignUpDogSitter {
 
     private final SignUpSitterService signUpSitterService;

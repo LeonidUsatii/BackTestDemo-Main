@@ -40,8 +40,12 @@ public class DogSitterDto {
     @Schema(description = "Почтовый индекс пользователя", example = "35778")
     private String zip;
 
-    @Schema(description = "имя пользователя", example = "username")
+    @Schema(description = "email", example = "DogSitter email")
     private String email;
+
+    @Schema(description = "Maximum size of dog that the dog sitter is willing to accept", example = "SMALL")
+    private String dogSize;
+
     public static DogSitterDto from(DogSitter dogSitter) {
         return DogSitterDto.builder()
                 .id(dogSitter.getId())
@@ -51,6 +55,7 @@ public class DogSitterDto {
                 .city(dogSitter.getCity())
                 .zip(dogSitter.getZip())
                 .email(dogSitter.getEmail())
+                .dogSize(dogSitter.getDogSize().toString())
                 .build();
     }
 
