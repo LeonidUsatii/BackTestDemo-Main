@@ -14,14 +14,22 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 6/11/2023
@@ -38,10 +46,21 @@ public class SecurityConfig {
     @Autowired
     private ObjectMapper objectMapper;
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable();
         httpSecurity.headers().frameOptions().disable();
+        httpSecurity.cors(c ->{
+            CorsConfigurationSource cs = request -> {
+                CorsConfiguration cc = new CorsConfiguration();
+                cc.setAllowedOrigins(List.of("*"));
+                cc.setAllowedMethods(List.of("*"));
+                cc.setAllowedHeaders(List.of("*"));
+                return cc;
+            };
+            c.configurationSource(cs);
+        });
 
         httpSecurity
                 .authorizeRequests()
@@ -49,9 +68,9 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST, "/api/registerUser/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/registerSetter/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/dog-sitters/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/users/my/profile/**").permitAll()
                 .antMatchers("/api/users/confirm/**").permitAll()
                 .antMatchers("/api/clinics/**").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/api/clinics/**").permitAll()
                 .antMatchers("/api/kennels/**").permitAll()
                 .antMatchers("/api/**").authenticated()
                 .and()
@@ -59,6 +78,7 @@ public class SecurityConfig {
                 .loginProcessingUrl("/api/login")
                 .successHandler((request, response, authentication) -> {
                     fillResponse(response, HttpStatus.OK, "Login successful");
+                    System.out.println("Leo-Sec-1");
                 })
                 .failureHandler(((request, response, exception) -> {
                     fillResponse(response, HttpStatus.UNAUTHORIZED, "Incorrect username or password");
@@ -66,10 +86,13 @@ public class SecurityConfig {
                 .and()
                 .exceptionHandling()
                 .defaultAuthenticationEntryPointFor(((request, response, authException) -> {
+                    System.out.println("Leo-Sec-2");
                     fillResponse(response, HttpStatus.UNAUTHORIZED, "User unauthorized");
                 }), new AntPathRequestMatcher("/api/**"))
+
                 .accessDeniedHandler((request, response, accessDeniedException) -> {
                     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                    System.out.println("Leo-Sec 77777777");
 
                     fillResponse(response, HttpStatus.FORBIDDEN, "Access denied for user with email <" +
                             authentication.getName() + "> and role " + authentication.getAuthorities());
@@ -83,6 +106,29 @@ public class SecurityConfig {
                 });
         return httpSecurity.build();
     }
+
+//    @Bean
+//    CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowedOrigins(List.of("*"));
+//        configuration.setAllowedMethods(List.of("*"));
+//        configuration.setAllowedHeaders(List.of("*"));
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
+//    }
+
+
+//    @Bean
+//    CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowedOrigins(List.of("https://www.hunde24.online"));
+//        configuration.addAllowedHeader("Content-Type");
+//        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
+//    }
 
     private void fillResponse(HttpServletResponse response, HttpStatus status, String message) {
         try {

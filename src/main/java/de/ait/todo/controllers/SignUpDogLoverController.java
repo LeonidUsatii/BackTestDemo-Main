@@ -6,6 +6,7 @@ import de.ait.todo.dto.DogLoverDto;
 import de.ait.todo.services.SignUpDogLoverService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -16,12 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin(origins = "https://www.hunde24.online", allowedHeaders = "Content-Type")
 public class SignUpDogLoverController implements SignUpDogLover {
 
     private final SignUpDogLoverService signUpDogLoverService;
 
     @Override
     public ResponseEntity<DogLoverDto> signUp(NewDogLoverDto newUser) {
+        System.out.println("LEO-LEO-LEO");
         signUpDogLoverService.signUpp(newUser);
         return ResponseEntity
                 .status(201)

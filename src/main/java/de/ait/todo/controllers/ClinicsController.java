@@ -3,7 +3,6 @@ package de.ait.todo.controllers;
 import de.ait.todo.controllers.api.ClinicsApi;
 import de.ait.todo.dto.ClinicDto;
 import de.ait.todo.dto.NewClinicDto;
-import de.ait.todo.dto.UpdateClinicDto;
 import de.ait.todo.services.ClinicsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +22,8 @@ public class ClinicsController implements ClinicsApi {
 
     @Override
     public List<ClinicDto> getClinics() {
+        System.out.println("LEO-LEO-LEO");
+
         return clinicsService.getClinics();
     }
 
@@ -40,11 +41,6 @@ public class ClinicsController implements ClinicsApi {
     @Override
     public ClinicDto deleteClinic(Long clinicId) {
         return clinicsService.deleteClinic(clinicId);
-    }
-
-    @Override
-    public ClinicDto updateClinic(Long clinicId, UpdateClinicDto updateClinic) {
-        return clinicsService.updateClinic(clinicId,updateClinic);
     }
 
 }

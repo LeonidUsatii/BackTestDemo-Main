@@ -21,16 +21,16 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
  *
  * @author Marsel Sidikov (AIT TR)
  */
-@TestConfiguration
-@EnableAutoConfiguration(exclude = {
-        DataSourceAutoConfiguration.class,
-        DataSourceTransactionManagerAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class
-})
-@Profile("test")
+//@TestConfiguration
+//@EnableAutoConfiguration(exclude = {
+//        DataSourceAutoConfiguration.class,
+//        DataSourceTransactionManagerAutoConfiguration.class,
+//        HibernateJpaAutoConfiguration.class
+//})
+//@Profile("test")
 public class TestConfig {
-    public static final String MOCK_ADMIN = "admin";
-
+//    public static final String MOCK_ADMIN = "admin";
+//
 //    @Bean
 //    @Primary
 //    public UserDetailsService userDetailsService() {

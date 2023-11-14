@@ -54,7 +54,7 @@ public class KennelDto {
                 .country(kennel.getCountry())
                 .kennelCity(kennel.getKennelCity())
                 .postCode(kennel.getPostCode())
-                .address(kennel.getAddress())
+                .kennelCity(kennel.getAddress())
                 .telephoneNumber(kennel.getTelephoneNumber())
                 .build();
     }

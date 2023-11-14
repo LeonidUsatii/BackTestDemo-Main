@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author Marsel Sidikov (AIT TR)
  */
-@Data /* Это рекомендуется заменить везде на equals() and HashCode()*/
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
