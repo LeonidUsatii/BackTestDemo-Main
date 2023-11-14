@@ -18,29 +18,35 @@ import javax.sql.DataSource;
 @Configuration
 public class DigitalOceanDataSourceConfiguration {
 
-    @Value("${DATABASE_USERNAME}")
-    private String username;
-
-    @Value("${DATABASE_PASSWORD}")
-    private String password;
-
-    @Value("${DATABASE_HOST}")
-    private String hostname;
-
-    @Value("${DATABASE_PORT}")
-    private String port;
-
-    @Value("${DATABASE_NAME}")
-    private String database;
-
-    @Bean
-    public DataSource dataSource() {
-        return DataSourceBuilder.create()
-                .driverClassName("org.postgresql.Driver")
-                .url("jdbc:postgresql://" + hostname +":" + port + "/" + database)
-                .username(username)
-                .password(password)
-                .build();
-    }
+//    @Value("${DATABASE_USERNAME}")
+//    private String username;
+//
+//    @Value("${DATABASE_PASSWORD}")
+//    private String password;
+//
+//    @Value("${DATABASE_HOST}")
+//    private String hostname;
+//
+//    @Value("${DATABASE_PORT}")
+//    private String port;
+//
+//    @Value("${DATABASE_NAME}")
+//    private String database;
+//
+//    @Bean
+//    public DataSource dataSource() {
+//        return DataSourceBuilder.create()
+//                .driverClassName("org.postgresql.Driver")
+//                .url("jdbc:postgresql://" + hostname +":" + port + "/" + database)
+//                .username(username)
+//                .password(password)
+//                .build();
+//    }
 
 }
+
+DATABASE_HOST                   jdbc:postgresql://localhost:5432/test_db
+DATABASE_NAME                    test_db
+DATABASE_PASSWORD                qwerty007
+DATABASE_PORT					5432
+DATABASE_USERNAME				postgres

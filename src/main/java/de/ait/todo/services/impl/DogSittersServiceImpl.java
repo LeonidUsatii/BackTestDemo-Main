@@ -37,11 +37,11 @@ public class DogSittersServiceImpl implements DogSittersService {
     }
 
     @Override
-    public List<DogSitterDto> getDogSittersByCity(String city) {
-        List<DogSitter> dogSitters = dogSittersRepository.findDogSittersByCity(city);
+    public List<DogSitterDto> getDogSittersByCityAndDogSize(String city, DogSitter.DogSize dogSize, String zip) {
+        List<DogSitter> dogSitters = dogSittersRepository.findDogSittersByCityAndDogSizeAndZip (city, dogSize, zip);
         return DogSitterDto.from(dogSitters);
-    }
 
+    }
 
 
 
