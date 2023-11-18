@@ -59,7 +59,7 @@ public class AuthenticatedUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return user.getState().equals(User.State.CONFIRMED);
+        return true;
     }
 
     public User getUser() {

@@ -45,10 +45,10 @@ public class NewDogSitterDto {
     private String email;
 
     @NotNull
-    @Schema(description = "Размер собаки", example = "A_MINI")
+    @Schema(description = "Размер собаки", example = "Mini")
     private String size;
 
-    @Schema(description = "Пароль пользователя", example = "Qwerty007!")
+    @Schema(description = "Пароль пользователя", example = "qwerty007")
     @NotBlank
     @Size(min = 7, max = 1000)
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$", message = "Weak password")

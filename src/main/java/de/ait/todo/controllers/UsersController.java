@@ -41,7 +41,6 @@ public class UsersController implements UsersApi {
 
     @Override
     public ResponseEntity<ProfileDto> getConfirmation(String confirmCode) {
-        System.out.println("getConfirm");
         return ResponseEntity
                 .status(201)
                 .body(usersService.confirm(confirmCode));
