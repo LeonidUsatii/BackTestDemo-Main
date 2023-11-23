@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * 03.11.2023
+ * DogsServicesBackend
+ *
+ * @author Konstantin Glazunov (AIT TR)
+ */
 
 @RequiredArgsConstructor
 @RestController
